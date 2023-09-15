@@ -1,0 +1,7 @@
+1. Use the random module to simulate each scenario.
+
+A. Simulate the sum of the rolls of two dice, by generating a random number between
+2 and 12.
+B. Simulate the sum of the rolls of two dice, by generating two random numbers
+between 1 and 6, then adding them.
+C. Explain how the two scenarios above are different, even though they result in the same values.
