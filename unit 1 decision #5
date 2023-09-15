@@ -1,13 +1,5 @@
-Fractions are represented as an integer numerator over an integer denominator. Recall
-that improper fractions have a numerator greater than denominator, and mixed
-fractions is a whole number combined with a proper fraction.
+5. Write a program that solves a quadratic equation in standard form using the
+quadratic formula. You may look this up to refresh your memory. Check if the
+equation has zero, one, or two solutions first, using the discriminant, and then
+output any solutions (if there are any).
 
-To change an improper fraction into a mixed fraction, you can use integer division and
-the remainder operator (modulo). Write a program that will allow the user to enter two
-integer values, a numerator and denominator. The program should output these values
-as an improper fraction, and then output the equivalent mixed fraction.
-
-For example:
-Enter the numerator: 8
-Enter the denominator: 3
-8 / 3 is equivalent to 2 and 2 / 3
