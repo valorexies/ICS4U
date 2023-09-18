@@ -3,3 +3,34 @@ quadratic formula. You may look this up to refresh your memory. Check if the
 equation has zero, one, or two solutions first, using the discriminant, and then
 output any solutions (if there are any).
 
+#Alexia Lee
+#ICS4U1 Unit 1 Decision #5
+#09-18-2023
+
+#input - get the quadratic equation and formula
+import math
+a = int(input("Input a: "))
+b = int(input("Input b: "))
+c = int(input("Input c: "))
+
+#process - determine how many solutions the equation has (the discriminant)
+#when discriminant is found, continue with quadractic formula calculations
+discriminant = b**2 - 4*a*c
+
+# 0 - repeated real number solution
+if discriminant == 0:
+    x = (-b + math.sqrt(b ** 2 - 4*a*c)) / (2*a)
+    #output
+    print("There is 1 real number solution: ", x1)
+
+#even - 2 real number solution
+elif discriminant > 0:
+    x1 = (-b + math.sqrt(b**2 - 4*a*c)) / (2*a)
+    x2 = (-b - math.sqrt(b**2 - 4*a*c)) / (2*a)
+    #output
+    print("there are 2 real number solutions: ", x1, "and", x2)
+    
+#odd - no real number solution 
+else:
+    #output
+    print("There are no real number solutions")
