@@ -5,3 +5,31 @@ A. Simulate the sum of the rolls of two dice, by generating a random number betw
 B. Simulate the sum of the rolls of two dice, by generating two random numbers
 between 1 and 6, then adding them.
 C. Explain how the two scenarios above are different, even though they result in the same values.
+
+#Alexia Lee
+#ICS4U1 Unit 1 Random #1
+#09-18-2023
+
+#input 
+import random 
+import math
+
+#process
+#a
+from random import*
+a1 = randint(2, 12)
+a2 = randint(2, 12)
+
+#b
+from random import*
+b1 = randint(1, 6)
+b2 = randint(1, 6)
+sum_b = b1 + b2
+
+#output
+print("The answer for a is", a1,"and", a2)
+print("The sum of", b1, "and", b2, "is", sum_b)
+
+#c
+#while in both A and B we are generating 2 random numbers between a certain interval, in B we are adding them together.
+#the main difference is that you can't change the value in A but in B you can because it gets added together.
