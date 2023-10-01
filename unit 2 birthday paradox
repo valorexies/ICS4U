@@ -1,27 +1,29 @@
 #Alexia Lee
 #ICS4U1 Unit 2 Birthday Problem
 #09-22-2023
-#determines the probability of n amount of people have the same birthday
+#determines the probability if n amount of people have the same birthday
 
-#input + process 
+#input - input the amount of people there are to calculate
 
 import math
 
 n = int(input("Amount of people are in the room: "))
 
+#process - processes the loop to calculate the probability 
 def birthday(n):
-    count = 1
+    probability = 1
+    # n==1 is an automatic 0, there is no probablitity of sharing the same bday if there's only 1 person in the room
     if n == 1:
-        probability = (365/365)
-        return probability
+        return 0
     else:
-        for y in range (n + 1):
-            probability = ((365 - count)/365) * y
-            count += 1 
+        for y in range (n):
+            # the *= tells the program multiply y with the answer from the previous loop 
+            probability *= ((365 - y)/365)
         return probability
 
 p = birthday(n)
 final_prob = (1- p) * 100
-print(final_prob)
 
-print("In this room of ", n, " people, the probability of at least two people sharing the same birthday is: ", final_prob, "%. For a 50% probability, the minimum amount of people needed is: ")
+#output - tells the user the answer 
+print("In this room of ", n, " people, the probability of at least two people sharing the same birthday is: ", (round(final_prob, 2)), "%")
+print("For a 50% probability, the minimum amount of people needed is: 23")
