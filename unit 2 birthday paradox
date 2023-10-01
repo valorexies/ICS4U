@@ -1,0 +1,27 @@
+#Alexia Lee
+#ICS4U1 Unit 2 Birthday Problem
+#09-22-2023
+#determines the probability of n amount of people have the same birthday
+
+#input + process 
+
+import math
+
+n = int(input("Amount of people are in the room: "))
+
+def birthday(n):
+    count = 1
+    if n == 1:
+        probability = (365/365)
+        return probability
+    else:
+        for y in range (n + 1):
+            probability = ((365 - count)/365) * y
+            count += 1 
+        return probability
+
+p = birthday(n)
+final_prob = (1- p) * 100
+print(final_prob)
+
+print("In this room of ", n, " people, the probability of at least two people sharing the same birthday is: ", final_prob, "%. For a 50% probability, the minimum amount of people needed is: ")
