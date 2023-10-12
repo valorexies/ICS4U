@@ -1,1 +1,3 @@
-
+new_d = new_decimal/16
+new_r = new_decimal % 16
+remain.append(new_r)
