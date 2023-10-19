@@ -20,16 +20,13 @@ def main_menu():
     option = int(input("Choose an option: "))
 
     if option == 1:
-        b = ascii()
-        print(b)
+        ascii()
 
     elif option == 2:
-        c = hexadecimal()
-        print(c)
+        hexadecimal()
 
     elif option == 3: 
-        d = binary()
-        print(d)
+        binary()
 
     elif option == 4:
         print("Now exiting the program...")
@@ -53,8 +50,7 @@ def ascii():
     print(decimal, "in ascii form is", digits)
 
     #returns back to the main menu
-    a = main_menu()
-    print(a)
+    main_menu()
 
 #function that uses python's built in module to convert a decimal number to hexadecimal
 def hexadecimal():
@@ -65,8 +61,7 @@ def hexadecimal():
     print(decimal, "in hexadecimal form is", value.lstrip("0x"))
 
     #returns back to the main menu
-    a = main_menu()
-    print(a)
+    main_menu()
 
 #function that uses python's built in module to convert a decimal number to binary
 def binary():
@@ -77,9 +72,8 @@ def binary():
     print(decimal, "in binary value is", value.lstrip("0b"))
 
     #returns back to the main menu
-    a = main_menu()
-    print(a)
+    main_menu()
 
-a = main_menu()
-print(a)
+#calls the main function and proceeds to run through the program
+main_menu()
 
