@@ -1,3 +1,85 @@
-new_d = new_decimal/16
-new_r = new_decimal % 16
-remain.append(new_r)
+#Alexia Lee
+#ICS4U1 Unit 3 Decimal Conversion
+#07-10-23
+
+#process -  functions and module required for program
+import math
+
+#process + output - prints out the main menu and what the user option is 
+
+def main_menu():
+    print(" ")
+    print("Main Menu")
+    print(" ")
+    print("1. Convert to ASCII")
+    print("2. Convert to Hexadecimal")
+    print("3. Convert to Binary")
+    print("4. Exit")
+
+    #each option leads to the function chosen or to exit
+    option = int(input("Choose an option: "))
+
+    if option == 1:
+        b = ascii()
+        print(b)
+
+    elif option == 2:
+        c = hexadecimal()
+        print(c)
+
+    elif option == 3: 
+        d = binary()
+        print(d)
+
+    elif option == 4:
+        print("Now exiting the program...")
+
+    else:
+        print("Enter a valid option")
+
+#find out how to make it so that a number with a decimal can be converted as well
+def ascii():
+    decimal = str(input("Input decimal number you want to convert to ascii: "))
+    digits = []
+
+    #get the digits in the decimal number given
+    for i in decimal:
+        digits.append(int(i))
+
+    #add 48 to each digit in the number to make it an ascii 
+    for i in range (len(digits)):
+        digits[i] += 48
+    
+    print(decimal, "in ascii form is", digits)
+
+    #returns back to the main menu
+    a = main_menu()
+    print(a)
+
+#function that uses python's built in module to convert a decimal number to hexadecimal
+def hexadecimal():
+    decimal = int(input("Input a decimal number you want to convert to hexadecimal: "))
+    
+    value = hex(decimal)
+    
+    print(decimal, "in hexadecimal form is", value.lstrip("0x"))
+
+    #returns back to the main menu
+    a = main_menu()
+    print(a)
+
+#function that uses python's built in module to convert a decimal number to binary
+def binary():
+    decimal = int(input("Input a decimal number you want to convert to binary: "))
+    
+    value = bin(decimal)
+
+    print(decimal, "in binary value is", value.lstrip("0b"))
+
+    #returns back to the main menu
+    a = main_menu()
+    print(a)
+
+a = main_menu()
+print(a)
+
