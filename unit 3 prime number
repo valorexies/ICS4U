@@ -1,1 +1,65 @@
+#Alexia Lee
+#ICS4U1 Unit 3 Prime Numbers
+#13-10-23
+#display all prime numbers between 1 and user entered number 
 
+prime_list = []
+
+#process - finds and displays all the prime numbers from between 1 and the user enetered number and 
+#if the number is prime
+
+#function that determines all the prime numbers from 1 to the given number
+def prime(number):
+    #loops to find all the prime numbers from 1 to given number
+    for num in range (1, number + 1):    
+        if num > 1:
+            #the loop that determines if it's a prime number
+            for i in range (2, num):
+
+                if (num % i) == 0:
+                    #not prime
+                    break
+                else:
+                    #prime
+                    prime_list.append(num)
+                    break
+          
+        else:
+            #number given is 1 
+            prime_list.append(num)
+
+    return(prime_list)
+
+#this function determines if the given number is prime using boolean
+def boolean(number):
+    for i in range (2, number+1):
+        if (number % i) == 0:
+            #not prime
+            return False
+        else:
+            #prime
+            return True
+        
+#main program that ties together the functions 
+def main():
+    number = int(input("Input a number: "))
+    prime_list= prime(number)
+
+    #if there are more than 1 number in the list then print it 
+    if len(prime_list) > 1:
+        #1 is not a prime number
+        prime_list.remove(1)
+        print("The prime numbers between 1 and the number given are", prime_list)
+    else:
+        #the number given was 1 and 1 is widely not considered to be a prime number
+        print("There are no prime numbers between 1 and the number given")
+
+    boolean(number)
+    if boolean(number) == True:
+        print("The given number is prime")
+    else:
+        print("The number given is not prime")
+
+#output - outputs the main function 
+a = main()
+print(a)
