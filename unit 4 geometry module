@@ -1,0 +1,36 @@
+#Alexia Lee
+#ICS4U1 Unit 4 Geometry
+#19-10-23
+
+import math
+
+def area_rectangle(l, w):
+    area_r = l * w
+    return
+
+def area_circle(r):
+    area_c = math.pi * r * r
+    return
+
+def circumference(r):
+    circumference = math.pie * 2 * r
+    return
+
+def volume_rectangular_prism(l, w, h):
+    volume = l * w * h
+    return
+
+def volume_cylinder(r, h):
+    volume = math.pi * r * r * h  
+    return                                                                    
+
+def surface_area_rectangular_prism(l,w, h):
+    rectangle = area_rectangle()
+    sa_rectanglep = 2 * ((w *l) + rectangle + (h * w))
+    return
+
+def surface_area_cylinder(r, h):
+    b = area_circle
+    c = circumference ()
+    sa_cylinder = 2 * c * b * h
+    return
