@@ -1,36 +1,37 @@
 #Alexia Lee
-#ICS4U1 Unit 4 Geometry
+#ICS4U1 Unit 4 Geometry Module
 #19-10-23
+
+#calculates the area of a rectangle and circle, circumference, volume of a rectangular prism and cylinder
+#and the surface area of a rectangular prism and cylinder
 
 import math
 
 def area_rectangle(l, w):
     area_r = l * w
-    return
+    return area_r
 
 def area_circle(r):
-    area_c = math.pi * r * r
-    return
+    area_c =     math.pi * r * r
+    return area_c
 
 def circumference(r):
-    circumference = math.pie * 2 * r
-    return
+    circumference = math.pi * 2 * r
+    return circumference
 
 def volume_rectangular_prism(l, w, h):
     volume = l * w * h
-    return
+    return volume
 
 def volume_cylinder(r, h):
     volume = math.pi * r * r * h  
-    return                                                                    
+    return volume                                                                
 
-def surface_area_rectangular_prism(l,w, h):
-    rectangle = area_rectangle()
-    sa_rectanglep = 2 * ((w *l) + rectangle + (h * w))
-    return
+def surface_area_rectangular_prism(l, w, h):
+    rectangle = area_rectangle(l, w)
+    sa_rectanglep = 2 * ((h * l) + rectangle + (h * w))
+    return sa_rectanglep
 
 def surface_area_cylinder(r, h):
-    b = area_circle
-    c = circumference ()
-    sa_cylinder = 2 * c * b * h
-    return
+    sa_cylinder = (circumference(r) * h) + (2 * area_circle(r))
+    return sa_cylinder
