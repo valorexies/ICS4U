@@ -1,26 +1,41 @@
 #Alexia Lee
-#ICS4U1 Unit 4 Geometry
+#ICS4U1 Unit 4 Geometry 
 #19-10-23
 
+#calls the module for calculating geometric dimensions
 import geometry
 
 def main():
+    #asks user which one they want to calculate
     shape = input("Select a rectangular prism or cylinder: ")
+
+    #if chosen rectangular prism, this gives them the volume and surface area
     if shape == "rectangular prism":
         l = int(input("Input the length: "))
         w = int(input("Input the width: "))
         h = int(input("Input the height: "))
-        volume = geometry.volume_rectangular_prism
-        surface_area = geometry.surface_area_rectangular_prism
-        print("Your rectangular prism's volume is", volume)
-        print("Your rectangular prism's surface area is", surface_area)
 
+        #calls the module's functions
+        volume_r = geometry.volume_rectangular_prism(l, w, h)
+        surface_area_r = geometry.surface_area_rectangular_prism(l, w, h)
+
+        print("Your rectangular prism's volume is", volume_r)
+        print("Your rectangular prism's surface area is", surface_area_r)
+
+    #surface area and volume of cylinder is given if user types clinder
     elif shape == "cylinder":
         r = int(input("Input the radius: "))
         h = int(input("Input the height: "))
-        geometry.volume_cylinder
-        geometry.surface_area_cylinder
+
+        #calls the module's functions
+        volume_c = geometry.volume_cylinder(r, h)
+        surface_area_c = geometry.surface_area_cylinder(r, h)
+
+        print("Your cylinder's volume is", round(volume_c))
+        print("Your cylinder's surface area is", round(surface_area_c))
+
     else:
         print("Please input a valid answer")
 
+#call main function
 main()
