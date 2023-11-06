@@ -55,4 +55,11 @@ def get_n():
 def main():
     get_n()
 
+    # get() test cases
+    # n = abcd    - This is a string, not an integer. Please try again.
+    # n = 14      - 87178291200
+    # n = -57     - Integer can not be a negative number. Please try again.
+    # n = 0       - Integer can not be a negative number. Please try again.
+    # n = 5       - 120
+
 main()
