@@ -1,6 +1,7 @@
 #Alexia Lee
 #ICS4U1 Unit 4 Factorial!
 #01/11/2023
+#Determines factorial of given number and does 2 error checks
 
 #calculates the factorial of the number given and returns it back to program when called
 def factorial(n):
