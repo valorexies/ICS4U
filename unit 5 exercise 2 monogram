@@ -1,0 +1,30 @@
+#Alexia Lee
+#ICS4U1 Unit 5 Exercise 2
+#06-11-23
+
+name = input("Enter your full name: ")
+
+# get the name, put it into a list, and then seperates it by each index and 
+# put it into another list and then get the first letter using word
+
+#puts the name given into a list and seperates it into seperate strings
+a = name.split()
+
+# seperates strings into it's own list
+first_name = a[0]
+middle_name = a[1]
+last_name = a[2]
+
+# takes the letter from the name list and now gets the first letter of each name
+fn_letter = first_name[0]
+mn_letter = middle_name[0]
+ln_letter = last_name[0]
+
+# gives them the appropriate upper or lowercase letter
+lower_first = fn_letter.lower()
+lower_middle = mn_letter.lower()
+upper_last = ln_letter.upper()
+
+
+#outputs monogram of given name
+print(lower_first, upper_last, lower_middle)
