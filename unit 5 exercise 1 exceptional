@@ -1,0 +1,124 @@
+#Alexia Lee
+#ICS4U1 Unit 5 Exercise 1
+#07-11-23
+
+
+def standard_deviation():
+    """ finds the standard deviation and average of 150 random integers from 25 to 75.
+    this is done by generating random numbers and adding them into a list 
+    then we add them up and divide by 150 to get the average
+    after we want to find the squared differences so we find the difference between each number and square it
+    we then find the average of the squared differences and square root it. 
+
+    Args: 
+    def standard_deviation() - finds the standard deviation of numbers given
+    numbers = [] - a list that holds all the integer values
+    u - the average of all the numbers randomly generated
+    v - the average of the squared differences
+    standard_deviation - the standard deviation 
+    above_expectional - numbers above the average and standard deviation added together
+    lower_exceptional - numbers below the average and standard deviation subtracted together
+
+    Assumption: 
+
+    Returns: u, the average, and standard_deviation, the standard deviation of the numbers
+    
+    """
+    #imports modules that will be used
+    import random
+    import math
+
+    number = []
+
+    #gets 150 ranom integers from 25 to 75
+    for i in range(150):
+        r = random.randint(25, 75)
+        number.append(r)
+
+    print(number)
+
+    #find sum
+    sum = 0
+
+    #loops 150 times and adds up all the numbers 
+    for i in range(150):
+        sum += number[i]
+
+    #find average by diving the sum(of all numbers) by the amount of numbers (150)
+    #average is name 'u' as per guide instructions
+    u = sum / 150
+    round(u, 2)
+
+    #find squared error 
+    #find the difference between each of the data points and then square it
+
+    squared_error = []
+
+    for i in range(150):
+        abc = (number[i] - u) ** 2
+        squared_error.append(abc)
+    
+    new_sum = 0
+
+    #average of the squared differences
+    #average of the squared differences is named 'v' as per guide insrtuctions
+    for i in range (150):
+        new_sum += squared_error[i]
+        v = new_sum / 150   
+
+    #standard deviation - square root of v
+    standard_deviation = math.sqrt(v)
+    round(standard_deviation, 2)
+
+    return int(u), int(standard_deviation)
+
+
+
+#adds or subtracts the average from the deviation to get exceptionality
+average, deviation = standard_deviation()
+above_exceptional = average + deviation
+lower_exceptional = average - deviation
+
+
+#loops program until you enter a number greater than 25 and lower than 75
+while True:
+    """ uses try and except to find out if the integer inputted is an integer or string and if the number user inputted is greater 
+    than 25 and lower than 75
+
+    args: user - user will enter an integer 
+    assumption: user >=25 and user <= 75, user(int)
+    returns:  "Your number is exceptional", "Your number is not exceptional" or "Please enter a number from 25 to 75"
+    
+    """
+
+    try:
+        user = int(input("Input an integer from 25 to 75: "))
+
+        if user >= 25 and user <= 75:
+
+            if user <= above_exceptional and user >= lower_exceptional:
+                print("Your number is exceptional")
+                break
+
+            else:
+                print("Your number is not exceptional")
+                break
+        else:
+            print("Please enter a number from 25 to 75")
+            
+    except ValueError:
+        print("Please enter a valid integer")
+
+
+print("For a number to be exceptional it has to be from", lower_exceptional, "to", above_exceptional)
+
+
+# test cases 
+# (since numbers are randomly generated, the results and exceptionality may vary, unless it's a string)
+# user = 23          - Please enter a number from 25 to 75
+# user = 54          - Your number is exceptional
+#                      For a number to be exceptional it has to be from 34 to 62   (this number will vary)
+# user = string      - Please enter a valid integer
+# user = 74          - Your number is not exceptional 
+#                    - For a number to be exceptional it has to be from 37 to 65   (this number will vary)
+# user = 85          - Please enter a number from 25 to 75
