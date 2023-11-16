@@ -3,36 +3,65 @@
 #06-11-23
 
 
-name = input("Enter your full name: ")
+def monogram():
+    """get the name, put it into a list, and then seperate it by each index (for the first letter) and 
+    put it into another list and then get the first letter using word
 
-if name == "":
-    print("No input given")
+    Args: name - program will get display a monogram of given name
 
-else:
-
-    # get the name, put it into a list, and then seperates it by each index and 
-    # put it into another list and then get the first letter using word
-
-    #puts the name given into a list and seperates it into seperate strings
-    a = name.split()
-
-    # seperates strings into it's own list
-    first_name = a[0]
-    middle_name = a[1]
-    last_name = a[2]
-
-    # takes the letter from the name list and now gets the first letter of each name
-    fn_letter = first_name[0]
-    mn_letter = middle_name[0]
-    ln_letter = last_name[0]
-
-    # gives them the appropriate upper or lowercase letter
-    lower_first = fn_letter.lower()
-    lower_middle = mn_letter.lower()
-    upper_last = ln_letter.upper()
-
-
+    Assumption: name(str) and a == len(3) 
     
-    #outputs monogram of given name
-        
-    print(lower_first, upper_last, lower_middle)
+    Returns: the first initials of each name given and in order from 1st initial, 3rd initial, then 2nd initial
+    
+    """
+    #loops program until a blank name is entered
+    while True:
+
+        try:
+            name = input("Enter your full name: ")
+
+            #splits the name entered into a list for easy sorting into if and elif statements
+            a = name.split()
+
+            # stops when a blank name is entered
+            if name == "":
+                print("Stopping program.")
+                break
+
+            elif len(a) == 3:
+                # puts the name given into a list and seperates it into seperate strings
+
+                # seperates strings into it's own list by name type
+                first_name = a[0]
+                middle_name = a[1]
+                last_name = a[2]
+
+                # takes the first letter from the name list and now has the first letter of each name
+                fn_letter = first_name[0]
+                mn_letter = middle_name[0]
+                ln_letter = last_name[0]
+
+                # gives them the appropriate upper or lowercase letter
+                lower_first = fn_letter.lower()
+                lower_middle = mn_letter.lower()
+                upper_last = ln_letter.upper()
+
+                #outputs monogram of given name and continues to loop
+                print(lower_first, upper_last, lower_middle)
+                continue
+
+            else:
+                print("Please enter a name with 3 words.")
+                continue
+
+        except ValueError:
+            print("Please enter your full 3 word name.")
+            continue
+
+monogram()
+
+# monogram() test cases
+# name = Paul Brian Rogers         - p R b
+# name = Paul Rogers               - Please enter a name with 3 words.
+# name = Paul Brian Rogers Smith   - Please enter a name with 3 words.
+# name =                           - Stopping program.
