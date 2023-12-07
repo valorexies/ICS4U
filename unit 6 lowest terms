@@ -1,1 +1,183 @@
+#Alexia Lee
+#ICS4U1 Unit 6 Part 2 Lowest Terms
+#05-12-23
 
+#accepts n/d as a string
+#returns n/d in the lowest terms
+#find the largest number that divides both
+
+
+def get_nd():
+    """ accepts input as a string
+    gets the numerator and denominator from user and goes through several value checks 
+
+    Args: n - numerator 
+          d - denominator
+    
+    Assumption - str(n) and str(d) (when accepting value)
+                 after try and except: 
+                 n > 0 and d > 0
+    
+    Returns - returns a numerator and denominator as an integer and above 0.
+
+    """
+
+    x = True
+    while x:
+        n = input("Input your numerator: ")
+        d = input("Input your denominator: ")
+
+        try: 
+            n = int(n)
+            d = int(d)
+
+            if n > 0 and d > 0:
+                break
+
+            elif n <= 0:
+                print("Your numerator has to be above 0")
+                continue
+        
+            elif d <= 0:
+                print("Your denominator has to be above 0")
+                continue
+        
+            else: 
+                print("Please input a valid integer")
+                continue
+        
+        except ValueError:
+            print("One of your inputs is not a valid integer")
+            continue
+
+    return n, d 
+
+def common_factors(n, d):
+    """ using for loop, we can find all the factors in the integers given 
+    then we can find out the greatest common divisor 
+
+    Args - numerator_factors = [] - a list that carries all the factors of the numerator given
+           denominator_factors = [] - a list that carries all the factors of the denominator given
+    
+    Assumption - N/A
+
+    Returns - returns the lists numerator_factors and denominator_factors back to the main program 
+    
+    
+    """
+
+    numerator_factors = []
+    denominator_factors = []
+
+    for x in range (1, n + 1):
+        if n % x == 0:
+            numerator_factors.append(x)
+
+    for y in range (1, d + 1):
+        if d % y == 0:
+            denominator_factors.append(y)
+
+    return numerator_factors, denominator_factors
+
+def greatest_common_divisor(numerator_factors, denominator_factors):
+    """ now we can find the greatest common divisor, we do this by determining if 2 numbers are the same in the list and then 
+    sorting the list from largest to smallest number and getting the first number which is the gcd
+
+    Args - common_factors = [] and common_factors = [x for x in numerator_factors if x in denominator_factors]
+              - this will input the numbers that are common in both lists numerator_factors and denominator_factors
+
+           gcd - is the greatest common factor between numerator and denominator
+    
+    Assumption - common_factors.sort(reverse = True) - assuming this will sort the list from largest to smallest
+
+    Returns - returns gcd back to the main program
+    
+    """
+
+    common_factors = []
+
+    common_factors = [x for x in numerator_factors if x in denominator_factors]
+
+    common_factors.sort(reverse = True)
+    gcd = common_factors[0]
+
+    return gcd
+
+def lowest_terms(n, d, gcd):
+    """ divide both the numerator and denominator by the gcd to get the lowest terms and return it back to main function
+
+    Args - lowest_numerator and lowest_denominator - will give us the simplest version of the fraction
+
+    Assumption - N/A
+
+    Returns - returns lowest_numerator and lowest_denominator back to the main function
+           
+    
+    """
+
+    lowest_numerator = n / gcd
+    lowest_denominator = d / gcd
+
+    return lowest_numerator, lowest_denominator
+
+
+def main():
+    """ calls the functions in correct order and store the variables
+
+    Args: n, d, numerator_factors, denominator_factors, gcd, lowest_numerator, lowest_denominator - all explained above
+
+    Assumption - if there are no common factors then it will just print out the numerator and denominator
+
+    Returns - prints out the given fraction in the simplest form
+    
+    
+    """
+    n, d = get_nd()
+    numerator_factors, denominator_factors = common_factors(n, d)
+    gcd = greatest_common_divisor(numerator_factors, denominator_factors)
+    lowest_numerator, lowest_denominator = lowest_terms(n, d, gcd)
+
+    print(n, "/", d, "in lowest terms is", lowest_numerator, "/", lowest_denominator)
+
+main()
+
+
+"""
+test cases 
+
+#1
+numerator - a
+denominator - b
+result - One of your inputs is not a valid integer
+
+#2
+numerator - 16
+denominator - 12
+result - 16 / 12 in lowest terms is 4.0 / 3.0
+
+#3
+numerator - 23
+denominator - 71
+result - 23 / 71 in lowest terms is 23.0 / 71.0
+
+#4
+numerator - hello
+denominator - 16
+result - One of your inputs is not a valid integer
+
+#5
+numerator - -3
+denominator - 4
+result - Your numerator has to be above 0 
+
+#6
+numerator - 16
+denominator - -4
+result - Your denominator has to be above 0 
+
+#7
+numerator - 13.6
+denominator - 23.6
+result - One of your inputs is not a valid integer
+
+"""
