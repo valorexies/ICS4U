@@ -1,1 +1,106 @@
+#Alexia Lee
+#ICS4U1 Unit 6 Factorial Sum
+#30/11/23
 
+#calculates the factorial of the number given and returns it back to program when called
+
+#performs 2 error checks and loops until true. 
+
+#can make the variable or list out here instead
+#global variable
+
+
+def get_n():
+    """ asks user to input a number and checks if the value entered is an integer and if it is above 0.
+    Function loops until user enters a valid input.
+
+    ValueError - checks if the value is correct; checks for integer or string
+
+    factorial(n) - if number is over 0 and not a string then it passes and program continues
+    
+    """
+
+    previous = []
+
+    x = True
+    while x:
+        n = input("Input a valid number: ")
+
+        #checks f value inputted is an integer and it's value is above 0
+        try:
+            n = int(n)
+
+            if n == 0:
+                print("Stopping loop.")
+                break
+
+            #1st error check, checks if the integer is over 0, if it is then factorial() is called
+
+            elif n > 0:
+                previous.append(n)
+                factorial_sum = factorial(n)
+                print("The factorial sum of", previous, "is", factorial_sum)
+                
+
+            #if integer is below 0 then, this will proceed    
+            else:
+                print("Integer can not be a negative number. Please try again.")
+                continue
+
+        #2nd error check, checks if value entered is a string or integer
+        except ValueError:
+            print("This is a string, not an integer. Please try again.")
+            continue
+    
+    return factorial_sum, previous
+
+
+def factorial(n):
+    """" determines the factorial of the number given
+
+    Args: n - number to count down from
+
+    Assumption: n > 0 and n(int)
+
+    Returns: n(int) - after going through the calculations, n should be returned as an integer.
+  
+    """
+    
+    factorial_numbers = []
+
+    for x in range (1, n):
+        n = x * n
+        x -= 1
+        factorial_numbers.append(n)
+    
+    factorial_sum = sum1(factorial_numbers)
+    return factorial_sum
+            
+#the main program that outputs the entire program 
+    
+def sum1(factorial_numbers):
+    factorial_sum = sum(factorial_numbers)
+    return factorial_sum
+
+def main():
+    get_n()
+
+    # get() test cases
+    # n = abcd    - This is a string, not an integer. Please try again.
+    # n = 14      - 87178291200
+    # n = -57     - Integer can not be a negative number. Please try again.
+    # n = 0       - Integer can not be a negative number. Please try again.
+    # n = 5       - 120
+
+main()
+
+# get_n(): asks user for several numbers to calculate n and checks if they entered a valid number, then it sends to factorial
+# and gets the factorial for that specific number
+# factorial(n): gets the factorial and puts it into a list
+# sum_factorial: adds up the list and gets the sum of a factorials
+
+
+#get the integers and put it in a list
+#seperate the integers into their own lists 
+#calculate the factorial of each integer individually
+#calculate sum 
