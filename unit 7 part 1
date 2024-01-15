@@ -1,0 +1,93 @@
+#Alexia Lee
+#ICS4U1 Unit 7 Part 1
+#20/12/23
+
+
+# a. prints out the names of students that have more than six quiz scores
+# b. calculates the final average for each student and prints out the student's name along with their average grade
+# c. calculates the minimum and maximum score for each student and prints their name. 
+
+infile = open("studentdata.txt", "r")
+
+
+#a. students that have more than 6 quiz scores
+
+def six_scores():
+    """ determines which students have more than 6 quiz scores and prints out their name as well as their scores
+
+    Args: line.split() - splits each line into a list 
+
+    Assumption: assumes that in the text file given, the name is written first and the scores after
+
+    Return: returns the name and scores of those who have more than 6 quiz scores
+    
+    
+    """
+    for line in infile:
+        six = line.split()
+        name = six[0]
+        six = [int(score) for score in six[1:]]
+
+        if len(six) > 6:
+            print(name, six)
+
+six_scores()
+# test a 
+#bill [23, 16, 19, 22, 45, 67, 12]
+#sue [8, 22, 17, 14, 12, 90, 78]
+#grace [12, 28, 21, 45, 12, 13, 14, 15, 78, 89, 23]
+
+
+#b. calculates the final average for each student and prints out the student name along with their average grade
+
+def student_average():
+    """ calculate final average for each student
+
+    Args: [int(final) for final in score [1:]] - makes each number after the name an integer.
+          sum() - determines the sum of all numbers in the list 'average'
+
+
+    Return: returns the name and final average for each student
+    
+    
+    """
+    for line in infile:
+        score = line.split()
+        name = score[0]
+        average = [int(final) for final in score[1:]]
+        final_average = sum(average) / len(average)
+        print(name, round(final_average, 2))
+
+#student_average()
+# test b
+#joe 15.0
+#bill 29.14
+#sue 34.43
+#grace 31.82
+#john 21.75
+
+#c. calculates the minimum and maximum score for each student and prints out their name.
+
+def min_max():
+    """ calculates the minimum and maximum score for each student 
+
+    Args: min() and max() - determins the minimum and maximum score respectively for each student
+
+    Return: returns the name, minimum, and maximum score and prints it out
+    
+    """
+    for line in infile:
+        score = line.split()
+        name = score[0]
+        number = [int(final) for final in score[1:]]
+        minimum = min(number)
+        maximum = max(number)
+        print(name, "'s minimum score is", minimum, "and their maximum score is", maximum)
+
+#min_max()
+#test c
+# joe 's minimum score is 10 and their maximum score is 20
+#bill 's minimum score is 12 and their maximum score is 67
+#sue 's minimum score is 8 and their maximum score is 90
+#grace 's minimum score is 12 and their maximum score is 89
+#john 's minimum score is 14 and their maximum score is 32
