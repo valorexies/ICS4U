@@ -1,0 +1,256 @@
+#Alexia Lee
+#ICS4U1 Unit 7 Part 2 
+#09/01/24
+
+
+#a)Write a program that prints the first name, lastname, and passer rating to construct a simplesentence … for example … Joe Black had a rating of 74.5.
+
+#b)Write a program that prints the lastname followed by a comma and then the first name.
+
+#c)Write a program that prints the first and last name of the highest rated player
+
+#d)Write a program that prints the average number of yards per completed pass (divide yards by completions) and print out the last name, first name and then calculation.
+
+#e)Print out the total number of players that completed over 300 passes.
+
+#opens file 
+infile = open("qbdata.txt", "r")
+
+#function named a for part a of assignment
+def a():
+    """for each line in the file, their first name, last name, and rating will be returned.
+
+    Args: first_name, last_name - variables for the player's first and last name
+
+    Assumption: assumes that each info is in the correct position as stated in the question and file.
+
+    Return: for each line, it prints out the print statement below including the variables
+    first_name, last_name, and rating.
+    
+    """
+    for line in infile:
+        data = line.split()
+        first_name = data[0]
+        last_name = data [1]
+        rating = data [10]
+        print(first_name, last_name, "had a rating of", rating)
+
+def b():
+    """
+    Args: first_name - is the first name of the player
+          last_name - is the last name of the player
+
+    Assumption: assumes that each info is in the correct position as stated in the question and file.
+
+    Return: returns the last name then first name of each player.
+    
+    """
+    for line in infile:
+        data = line.split()
+        first_name = data[0]
+        last_name = data[1]
+        print(last_name, ",", first_name)
+
+
+def c():
+    """
+    Args: name - contains the first then last name of each player
+          rating - turns the string into a float of the string in the 11th position (10 for python)
+
+    Assumption: assumes that each info is in the correct position as stated in the question and file.
+
+    Return: returns the name of the player with the highest rating
+    
+    """
+    highest_rating = 0
+
+    for line in infile:
+        data = line.split()
+        name = data [0], data[1]
+        
+        rating = float(data[10])
+
+        if rating > highest_rating:
+            highest_rating = rating
+            highest_player = name
+    
+    print("The highest rated player is", highest_player)
+    
+
+def d():
+    """
+    Args: first_name, last_name - their full name
+          data - turns all the information from the 4th to 7th position in each line into an integer
+
+    Assumption: assumes that each info is in the correct position as stated in the question and file.
+
+    Return: returns the average number of yards per completed pass (rounded to the 2nd decimal place) and prints out their full name.
+    
+    """
+    for line in infile:
+        data = line.split()
+        first_name = data[0]
+        last_name = data[1]
+        data = [int(passes) for passes in data [4:7]]
+        completion = data[2] / data[0]
+
+        print(last_name, ",", first_name, ",", round(completion, 2))
+        
+
+def e():
+    """splits each line, then splits the 5th object (the completions) into each number place and detects if the number is greater
+    than or equal to 3 (the hundredth place digit), meaning that the passes completed are over 300.
+
+    Args: data - splits each line into a list and then splits each integer in the 4th place in the list into seperated digits
+          if data[0] > 3 - checks if the digit in the hundredth decimal place is over or equal to 3, then adds it to the count
+          count - counts each player that has over 300 completed passes
+    
+    Assumption: assumes that each info is in the correct position as stated in the question and file.
+
+    Returns: returns the number of players that have completed over 300 passes
+    """
+    count = 0
+    for line in infile:
+        data = line.split()
+        data = [int(passes) for passes in data[4]]
+
+        if data[0] >= 3:
+            count += 1
+    
+    print(count, "players have completed over 300 passes")
+
+a()
+#test a()
+"""
+Colt McCoy had a rating of 74.5
+Josh Freeman had a rating of 95.9
+Michael Vick had a rating of 100.2
+Matt Schaub had a rating of 92.0
+Philip Rivers had a rating of 101.8
+Matt Hasselbeck had a rating of 73.2
+Jimmy Clausen had a rating of 58.4
+Joe Flacco had a rating of 93.6
+Kyle Orton had a rating of 87.5
+Jason Campbell had a rating of 84.5
+Peyton Manning had a rating of 91.9
+Drew Brees had a rating of 90.9
+Matt Ryan had a rating of 91.0
+Matt Cassel had a rating of 93.0
+Mark Sanchez had a rating of 75.3
+Brett Favre had a rating of 69.9
+David Garrard had a rating of 90.8
+Eli Manning had a rating of 85.3
+Carson Palmer had a rating of 82.4
+Alex Smith had a rating of 82.1
+Chad Henne had a rating of 75.4
+Tony Romo had a rating of 94.9
+Jay Cutler had a rating of 86.3
+Jon Kitna had a rating of 88.9
+Tom Brady had a rating of 111.0
+Ben Roethlisberger had a rating of 97.0
+Kerry Collins had a rating of 82.2
+Derek Anderson had a rating of 65.9
+Ryan Fitzpatrick had a rating of 81.8
+Donovan McNabb had a rating of 77.1
+Kevin Kolb had a rating of 76.1
+Aaron Rodgers had a rating of 101.2
+Sam Bradford had a rating of 76.5
+Shaun Hill had a rating of 81.3
+
+"""
+
+b()
+#test b()
+"""
+McCoy , Colt
+Freeman , Josh
+Vick , Michael
+Schaub , Matt
+Rivers , Philip
+Hasselbeck , Matt
+Clausen , Jimmy
+Flacco , Joe
+Orton , Kyle
+Campbell , Jason
+Manning , Peyton
+Brees , Drew
+Ryan , Matt
+Cassel , Matt
+Sanchez , Mark
+Favre , Brett
+Garrard , David
+Manning , Eli
+Palmer , Carson
+Smith , Alex
+Henne , Chad
+Romo , Tony
+Cutler , Jay
+Kitna , Jon
+Brady , Tom
+Roethlisberger , Ben
+Collins , Kerry
+Anderson , Derek
+Fitzpatrick , Ryan
+McNabb , Donovan
+Kolb , Kevin
+Rodgers , Aaron
+Bradford , Sam
+Hill , Shaun
+
+"""
+
+c()
+#test c()
+"""
+The highest rated player is ('Tom', 'Brady')
+
+"""
+
+d()
+#test d()
+"""
+McCoy , Colt , 11.67
+Freeman , Josh , 11.86
+Vick , Michael , 12.95
+Schaub , Matt , 11.97
+Rivers , Philip , 13.19
+Hasselbeck , Matt , 11.28
+Clausen , Jimmy , 9.92
+Flacco , Joe , 11.84
+Orton , Kyle , 12.47
+Campbell , Jason , 12.3
+Manning , Peyton , 10.44
+Brees , Drew , 10.31
+Ryan , Matt , 10.38
+Cassel , Matt , 11.89
+Sanchez , Mark , 11.84
+Favre , Brett , 11.56
+Garrard , David , 11.58
+Manning , Eli , 11.81
+Palmer , Carson , 10.97
+Smith , Alex , 11.62
+Henne , Chad , 10.97
+Romo , Tony , 10.84
+Cutler , Jay , 12.54
+Kitna , Jon , 11.32
+Brady , Tom , 12.04
+Roethlisberger , Ben , 13.33
+Collins , Kerry , 11.39
+Anderson , Derek , 12.22
+Fitzpatrick , Ryan , 11.76
+McNabb , Donovan , 12.28
+Kolb , Kevin , 10.41
+Rodgers , Aaron , 12.57
+Bradford , Sam , 9.92
+Hill , Shaun , 10.45
+
+"""
+
+e()
+#test e()
+"""
+12 players have completed over 300 passes
+"""
+
+#closing file
+infile.close()
