@@ -1,0 +1,110 @@
+#Alexia lee
+#ICS4U1 Unit 8 Instance Methods
+#01-02-24
+
+#a) Write an instance method area that returns, as a float value, the area of its Circle object
+#b) Write a method smaller that could be called by a statement like c3 = c1.smaller(c2)
+
+#create the Class
+class Circle():
+    x = 0.0 # x coordinate of circle
+    y = 0.0 # y coordinate of circle
+    r = 0.0 # radius
+
+    #a. returns the area of the Circle object as a float value
+    def area_circle(self):
+        """calculates the area of the circle and returns the area as a float value
+
+        Args: self - used as a parameter
+              self.r - radius of circle 
+
+        Assumption: Assumes that the user enters a float and integer value greater than 0 
+
+        Return: returns the area of the Circle as a float value
+        
+        """
+        return(3.14 * self.r * self.r)
+    
+    #b. compare 2 circles and print out the smaller circle
+    def smaller(c1, c2):
+        """gets the radius of the 2 circles and compares which one is smaller 
+        
+        Args: area_of_c1 and area_of_c2 - variables that have the area of c1 and c2
+
+        Assumption: the function will calculate which circle has a smaller area 
+
+        Returns: depending on which area is smaller it will print out the appropriate statement
+        ex. if area_of_c1 = 7 and area_of_c2 = 12, it will print out "c2 is smaller than c2"
+        
+        """
+
+
+        #if c1's area is larger than area of c2 then, print out "c2 is smaller than c1"
+        if area_of_c1 > area_of_c2:
+            print("c2 is smaller than c1")
+
+        #if area of c2 is larger than c1 then, print out "c1 is smaller than c2"
+        elif area_of_c1 < area_of_c2:
+            print("c1 is smaller than c2")
+
+        #if c1 and c2's area are equal then print out "They are of equal value"
+        else:
+            print("They are of equal value ")
+
+#gather information from the user 
+c1 = Circle()
+c1.x = int(input("Input your c1's x-coordinate: "))
+c1.y = int(input("Input your c1's y-coordinate: "))
+c1.r = int(input("Input your c1's radius: "))
+
+c2 = Circle()
+c2.x = int(input("Input your for c2's x-coordinate: "))
+c2.y = int(input("Input your for c2's y-coordinate: "))
+c2.r = int(input("Input your for c2's radius: "))
+
+#prints the area of c1
+area_of_c1 = c1.area_circle()
+print("The area of c1 is", area_of_c1)
+
+#prints the area of c2
+area_of_c2 = c2.area_circle()
+print("The area of c2 is", area_of_c2)
+
+#prints out which circle is smaller
+c3 = c1.smaller(c2)
+
+"""
+test case #1
+
+Input:
+c1.r = 6
+c2.r = 2
+
+Output: 
+The area of c1 is 113.03999999999999
+The area of c2 is 12.56
+c2 is smaller than c1
+
+test case #2
+
+Input:
+c1.r = 2
+c2.r = 2
+
+Output: 
+The area of c1 is 12.56
+The area of c2 is 12.56
+They are of equal value
+
+test case #3
+
+Input:
+c1.r = 8
+c2.r = 14
+
+Output: 
+The area of c1 is 200.96
+The area of c2 is 615.44
+c1 is smaller than c2
+
+"""

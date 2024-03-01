@@ -1,0 +1,146 @@
+#Alexia Lee
+#ICS4U1 Unit 8 Creating Objects
+#01-02-24
+
+#create class Fraction
+class Fraction():
+    num = 0 
+    den = 0
+
+#get fraction numerator and denominator from the user
+
+f1 = Fraction()
+f1.num = int(input("Input your numerator for fraction 1: "))
+f1.den = int(input("Input your denominator for fraction 1: "))
+
+f2 = Fraction()
+f2.num = int(input("Input your numerator for fraction 2: "))
+f2.den = int(input("Input your denominator for fraction 2: "))
+
+#a. double the value of f1
+def a():
+    """ part a of assignment, it doubles the value of f1
+
+    Args: f1.num and f1.den - variables got from user input and is doubled
+
+    Assumption: assumes that the user entered an integer greater than 0 
+
+    Return: returns the numerator and denominator as a fraction and double the original fraction
+    
+    """
+    print("This function inputs double the value of fraction 1")
+    f1.num = f1.num * 2
+    f1.den = f1.den * 2
+    print(f1.num, "/",f1.den)
+
+#b. Invert f2
+def b():
+    """ part b of assignment, f2 gets inverted
+
+    Args:
+
+    Assumption: assumes that the user entered an integer greater than 0 
+    
+    Return:
+    
+    """
+    print("This function inputs an inverted version of function 2")
+    temp = f2.num
+    f2.num = f2.den
+    f2.den = temp
+    print(f2.num, "/", f2.den)
+
+#c. Make f1 equal to the (unsimplified) product of f1 and f2
+def c():
+    """
+    Args:
+
+    Assumption: assumes that the user entered an integer greater than 0 
+    
+    Return:
+    
+    """
+    print("This function makes f1 equal to the product of f1 and f2")
+    f1.num = f1.num * f2.num
+    f1.den = f1.den * f2.den
+    print(f1.num, "/", f1.den)
+
+#d. Make f2 equal to the (unsimplified) sum of f1 and f2
+def d():
+    """
+    Args:
+
+    Assumption: assumes that the user entered an integer greater than 0 
+    
+    Return:
+    
+    """
+    print("This function makes f2 equal to the sum of f1 and f2")
+    f2.num = f1.num + f2.num
+    f2.den = f1.den + f2.den
+    print(f2.num, "/", f2.den)
+
+#e. Make f1 equal to |f1|
+def e():
+    """
+    Args:
+
+    Assumption: assumes that the user entered an integer greater than 0 
+    
+    Return:
+    
+    """
+    print("This function makes f1 equal to the absolute value of f1")
+    f1.num = abs(f1.num)
+    f1.den = abs(f1.den)
+    print(f1.num, "/", f1.den)
+
+#runs programs
+a()
+b()
+c()
+d()
+e()
+
+"""
+test case #1:
+
+Input:
+Input your denominator for fraction 1: 3
+Input your numerator for fraction 2: 8
+Input your denominator for fraction 2: 4
+
+Output: 
+This function inputs double the value of fraction 1 - a()
+12 / 6
+This function inputs an inverted version of function 2 - b()
+4 / 8
+This function makes f1 equal to the product of f1 and f2 - c()
+48 / 48
+This function makes f2 equal to the sum of f1 and f2 - d()
+52 / 56
+This function makes f1 equal to the absolute value of f1 - e()
+48 / 48
+
+
+test case #2:
+
+Input:
+Input your numerator for fraction 1: -8
+Input your denominator for fraction 1: -2
+Input your numerator for fraction 2: 6
+Input your denominator for fraction 2: -13 
+
+Output: 
+This function inputs double the value of fraction 1 - a()
+-16 / -4
+This function inputs an inverted version of function 2 - b()
+-13 / 6
+This function makes f1 equal to the product of f1 and f2 - c()
+208 / -24
+This function makes f2 equal to the sum of f1 and f2 - d()
+195 / -18
+This function makes f1 equal to the absolute value of f1 - e()
+208 / 24
+
+"""

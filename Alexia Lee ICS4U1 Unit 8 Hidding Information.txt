@@ -1,0 +1,91 @@
+#Alexia Lee
+#ICS4U1 Unit 8 Hiding Information
+#12-02-24
+
+
+# The method should take three float parameters, the coordinates of the center and the radius
+# The method should ensure that the circle's radius is not negative by changing the sign of any 
+# negative radius parameters before storing them in the radius field of the circle
+
+class Circle:
+    x = 0.0 # x coordinate of circle
+    y = 0.0 # y coordinate of circle
+    r = 0.0 # radius
+
+    #uses the __init__ method for the parameters of the function to change the radius to a negative if not done so already
+    def __init__(self, x, y, r):
+        """
+        Args: self - parameter, refers to the object that is calling the method 
+        x, y, r - parameters from the user for the circle
+        self.__xcoordinate, self.__ycoordinate, self.__radius - change to self parameter to use in __init__ method
+        
+        Assumption: assummes that the user enters a valid number (not a string)
+        
+        """
+        
+        self.__xcoordinate = x
+        self.__ycoordinate = y
+        
+        #if r is less than 0, then use abs() to make r not negative
+        if r < 0:
+            self.__radius = abs(r)
+
+        #otherwise, keep r and give it a new variable name
+        else:
+            self.__radius = r
+
+    #prints the hidden value so we know if the program worked
+    def show(self):
+        """
+        Args: self, so we can return self.__xcoordinate, self.__ycoordinate, and self.__radius
+
+        return: returns x, y, and r coordinates in (x, y, r) format and in positive form
+
+        """
+
+        return self.__xcoordinate, self.__ycoordinate, self.__radius
+
+#input values for the Circle class
+c1 = Circle(
+    float(input("Input your c1's x-coordinate: ")),
+    float(input("Input your c1's y-coordinate: ")),
+    float(input("Input your c1's radius: "))
+)
+
+ 
+#prints show function in circle class using parameters from c1
+print(c1.show())
+
+
+#do i need to do error checks (for all of the u8 assignments)
+#why does u5 show up on my record of achievement as incomplete
+
+"""
+test case #1
+
+input:
+x: 5
+y: 12
+r: -8
+
+output: (5.0, 12.0, 8.0)
+
+test case #2
+
+input:
+x: 23
+y: 5
+r: 10
+
+output: (23.0, 5.0, 10.0)
+
+test case #3
+
+input:
+x: 150.3
+y: 65.9
+r: -13.8
+
+output: (150.3, 65.9, 13.8)
+
+"""
