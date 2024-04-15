@@ -1,0 +1,167 @@
+#Alexia Lee
+#ICS4U1 Unit 10 Address Book
+#01-03-24
+#print out all the names of the people in the file and ask user who's address and phone number they want to see 
+ 
+# opens the file and divides the content into each line
+infile = open("contacts.txt", "r")
+content = infile.readlines()
+
+#class that has several functions to print out 
+class Info():
+
+    #automatically called to switch to self parameter so variable can be accessed within class
+    def __init__(self, first, last, address, phone_number):
+        self.first = first
+        self.last = last
+        self.address = address
+        self.phone_number = phone_number
+
+    #returns full name and phone number
+    def name_phone(self):
+        """
+        Args: self - parameter from the __init__ function
+
+        Returns: returns self.first, self.last, and self.phone_number
+    
+        """
+        return (self.first, self.last, self.phone_number)
+    
+    #returns full name and address
+    def name_address(self):
+        """
+        Args: self - parameter from the __init__ function
+
+        Returns: returns self.first, self.last, and self.address
+    
+        """
+        return(self.first, self.last, self.address)
+
+# list to put all the contacts in one line into
+contacts_list = []
+
+#splits each word in each line in the file then puts it into a variable
+for line in content:
+    """
+    Args: line.split() - splits each line into several strings
+
+    Assumption: assuming that everyone's address is 3 strings long 
+                assumes that each line has the same format of first name, last name, address, phone number
+    
+    """
+    contacts = line.split()
+    first = contacts[0]
+    last = contacts[1]
+    address = contacts[2:5]
+    phone_number = contacts[5]
+    contacts_list.append(Info(first, last, address, phone_number))
+
+#main function that allows you to choose to print several choices
+def main():
+    print("Welcome to your Address Book!")
+    print("If you want their name and phone number input '1'")
+    print("If you want their name and address input '2'")
+    print("If you want their whole contact input '3'")
+
+    """
+    Args: choice - user enters an option from the above lines and goes through the if statements if not then goes to the else statement
+
+    Assumption: assumes user enters 1, 2, or 3
+                name - assumes user enters a name that is on the file
+
+    Returns: depending on what the user chose, it returns the corresponding information
+    
+    """
+
+    while True:
+        choice = input(": ")
+
+        #user chose to get the full name and phone number of the person they enter
+        if choice == "1":
+            name = input("Enter the first name of the person: ")
+            for contact in contacts_list:
+                if contact.first == name:
+                    print(contact.name_phone())
+                    break
+            else:
+                print("Contact not found.")
+            break
+
+        #user chose to get the full name and address of the person they enter
+        elif choice == "2":
+            name = input("Enter the first name of the person: ")
+            for contact in contacts_list:
+                if contact.first == name:
+                    print(contact.name_address())
+                    break
+            else:
+                print("Contact not found.")
+            break
+
+        #user chose to print the whole line in the file depending on who they choose
+        elif choice == "3":
+            person()
+            break
+        else:
+            print("Please enter a valid option")
+
+
+#function that prints out the whole line in the file depending on which name the user enters
+def person():
+
+    """
+    Args: content[x] - print x # line
+          name - user enters the first name of a person in the file
+
+    Assumption: assumes that user enters a string or name from the file
+
+    Return: returns the whole line of the name the user inputs
+    
+    """
+    name = input("Enter the first name of the person: ")
+
+    #goes through each line and returns the correct line with all the info according to what user enters
+    if name == "Winter":
+        print(content[0])
+    elif name == "Lance":
+        print(content[1])
+    elif name == "Jimmie":
+        print(content[2])
+    elif name == "Brooke":
+        print(content [3])
+    elif name == "Guy":
+        print(content[4])
+    elif name == "Janice":
+        print(content[5])
+    elif name == "Gabriela":
+        print(content [6])
+    elif name == "Luke":
+        print(content[7])
+    elif name == "Jan":
+        print(content[8])
+    elif name == "Kari":
+        print(content [9])
+    elif name == "George":
+        print(content [10])
+    elif name == "Dominic":
+        print(content [11])
+    elif name == "Amber":
+        print(content[12])
+    elif name == "Patsy":
+        print(content[13])
+    elif name == "Tabitha":
+        print(content [14])
+    elif name == "Angelica":
+        print(content[15])
+    elif name == "Johnnie":
+        print(content[16])
+    elif name == "Roberto":
+        print(content [17])
+    elif name == "Neil":
+        print(content [18])
+    elif name == "Richard":
+        print(content[19])
+    else:
+        print("Contact not found")
+
+main()
