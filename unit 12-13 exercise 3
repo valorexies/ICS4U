@@ -1,0 +1,41 @@
+#Alexia Lee
+#ICS4U1 Unit 12-13 Exercise 3
+#13-05-24
+
+
+#bus seating capactiy = 50
+#final fare amount = 5500   
+#default fare = seating capacity * 100
+#final amount = total fare + 10% total fare
+
+#gets values from user
+name = input("Input name of Vehicle: ")
+mileage = input("Input the mileage: ")
+
+#the set capacity
+capacity = 50
+
+#parent class
+class Vehicle:
+    def __init__(self, name, mileage, capacity):
+        self.name = name
+        self.mileage = mileage
+        self.capacity = capacity
+
+    # the default fare is 100 times the seating capacity
+    def fare(self):
+        default_fare = int(self.capacity * 100)
+        return default_fare
+
+#child class
+class Bus(Vehicle):
+    #fare is overriden in bus class 
+    def fare(self):
+        #bus fare is charged an extra 10% for a maintenance charge
+        bus_fare = super().fare()
+        total_fare = int(bus_fare + bus_fare * 0.1)
+        return total_fare
+
+#output - prints out the information on bus fare prices
+bus = Bus(name, mileage, capacity)
+print("Final fare is $", bus.fare())
