@@ -1,0 +1,67 @@
+#Alexia Lee
+#ICS4U1 Unit 12 Exercise 1: Create a child class
+#23/04/24
+
+#parent class 
+class Vehicle:
+    #asks for the vehicle's name 
+    def veh_info(self, vehicle_name):
+        print("Vehicle name:", vehicle_name)
+
+#child class that inherits Vehicle class
+class Bus(Vehicle):
+    #asks for bus's information about name, colour, maximum speed, mileage, and whether it is an automatic or manual bus.
+    def info(self, name, colour, max_speed, mileage, auto_man):
+        print("Name:", name)
+        print("Bus Colour:", colour)
+        print("Max Speed:", max_speed, "km/h")
+        print("Mileage:", mileage, "km/l")
+        print("Automatic or Manual: ", auto_man)
+
+        
+
+#creates the object
+bus = Bus()
+
+#get info from user
+name = input("Vehicle name: ")
+bus_name = input("Input bus name: ")
+bus_colour = input("Bus Colour: ")
+
+x = True
+y = True
+z = True
+
+#error checks to make sure the max speed is a number
+while x:
+    try:
+        max_speed = int(input("Max Speed: "))
+        break
+    except ValueError:
+        print("Input a number")
+        continue
+
+#error checks to make sure that mileage is a number
+while y:
+    try:
+        mileage = int(input("Mileage: "))
+        break
+    except ValueError:
+        print("Input a number")
+        continue
+
+#error checks to make sure user enters either automatic or manual
+while z:
+    auto_or_man = input("Automatic or Manual? : ")
+    if auto_or_man == "automatic" or auto_or_man == "manual":
+        break
+    else:
+        print("Input the correct option")
+        continue
+
+
+#prints out the information from the Vehicle class through the bus object
+bus.veh_info(name)
+
+#prints out information from Bus class using user's information inputted
+bus.info(bus_name, bus_colour, max_speed, mileage, auto_or_man)
