@@ -1,0 +1,58 @@
+#Alexia Lee
+#ICS4U1 Unit 13 Exercise 2: Class Inheritance
+#24-04-24
+
+#asks user to enter information
+name = input("Input name of Vehicle: ")
+max_speed = input("Input the max speed: ")
+mileage = input("Input the mileage: ")
+
+#parent class
+class Vehicle:
+    def __init__(self, name, max_speed, mileage):
+        self.name = name
+        self.max_speed = max_speed
+        self.mileage = mileage
+
+    #sets the method to be inherited by bus class
+    def seating_capacity(self, capacity):
+        print("The seating capacity is", capacity)
+
+#child class
+class Bus(Vehicle):
+    #gets information from parent class after inheriting it
+    def seating_capacity(self, capacity):
+        # super is used to refer to the parent class
+        return super().seating_capacity(capacity)
+    
+    def vehicle_info(self, name, max_speed, mileage):
+        print("Name:", name)
+        print("Max Speed:", max_speed, "km/h")
+        print("Mileage:", mileage, "km/l")
+
+x = True
+y = True
+
+#error checks to make sure the max speed is a number
+while x:
+    try:
+        e = int(input("Max Speed: "))
+        break
+    except ValueError:
+        print("Input a number")
+        continue
+
+#error checks to make sure that mileage is a number
+while y:
+    try:
+        f = int(input("Mileage: "))
+        break
+    except ValueError:
+        print("Input a number")
+        continue
+
+#calls class
+bus = Bus(name, max_speed, mileage)
+
+#given the default value of 50
+print(bus.seating_capacity(50))
